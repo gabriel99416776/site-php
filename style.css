@@ -13,6 +13,17 @@ body {
   background-color: #5fd689;
   padding: 30px;
 }
+
+.navbar img{
+  width: 190px;
+  height: 60px;
+  margin-left: 50px;
+}
+
+.collapse .nav-link{
+  color: #000;
+font-size: 17px;
+}
 .container {
   display: flex;
   flex-direction: column;
