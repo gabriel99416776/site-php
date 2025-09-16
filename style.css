@@ -7,22 +7,76 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background-color: #f8f8f8;
+  background-color: #dfdfdf;
 }
-.navbar{
-  background-color: #5fd689;
+.navbar {
+  background-color: #fff7eb;
+  box-shadow: 0 4px 1em grey;
   padding: 30px;
 }
 
-.navbar img{
+.navbar img {
   width: 190px;
   height: 60px;
   margin-left: 50px;
 }
-
-.collapse .nav-link{
+.navbar .hover-line {
+  position: relative;
   color: #000;
-font-size: 17px;
+  text-decoration: none;
+  padding-bottom: 5px;
+}
+
+.navbar .hover-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: green;
+  transition: width 0.3s ease-in-out;
+}
+
+.navbar .hover-line:hover::after {
+  width: 100%;
+}
+.navbar .nav-link.login-btn {
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  color: #fff; /* texto branco */
+  background: linear-gradient(
+    90deg,
+    rgba(107, 159, 181, 1) 0%,
+    rgba(71, 214, 75, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.navbar .nav-link.login-btn:hover {
+  background-color: #218838; /* verde mais escuro */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  transform: scale3d(1.1, 1.1, 1.2);
+}
+
+.bordar-cima {
+  background: linear-gradient(
+    90deg,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
+  height: 10px;
+}
+.collapse .nav-link {
+  color: #000;
+  font-size: 17px;
 }
 .container {
   display: flex;
@@ -110,8 +164,42 @@ font-size: 17px;
   border-radius: 50%;
 }
 
-
-section{
+section {
   width: 70%;
   margin: 50px auto;
+}
+.btn-imc {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; /* bem arredondado */
+  background: linear-gradient(135deg, #28a745, #20c997); /* verde bonito */
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn-imc:hover {
+  transform: scale(1.03); /* cresce um pouco */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(135deg, #20c997, #28a745); /* inverte o degradê */
+}
+
+/* simples utilitário para esconder */
+.hidden {
+  display: none !important;
+}
+
+/* animação suave (opcional) */
+.input-field {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.input-field.hidden {
+  opacity: 0;
+  transform: translateY(-6px);
 }

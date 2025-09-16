@@ -38,57 +38,109 @@
                             <div class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix">people</i>
-                                        <input type="text" id="nome" class="autocomplete" name="nome">
-                                        <label for="nome">Nome:</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Nome:</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="nome" placeholder="Fulano">
+
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix">fitness_center</i>
-                                        <input type="text" id="peso" class="autocomplete" name="peso">
-                                        <label for="peso">Peso:</label>
+                                        <label for="exampleFormControlInput1" class="form-label">Peso:</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" name="peso" placeholder="80">
+
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <i class="material-icons prefix">merge_type</i>
-                                        <!-- tirei a classe autocomplete -->
-                                        <input type="text" id="altura" name="altura" maxlength="4">
-                                        <label for="altura">Altura:</label>
+                                        <label for="altura" class="form-label">Altura:</label>
+                                        <input type="text" class="form-control" id="altura" step="0.01" min="1" max="2.50" name="altura">
+
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <input type="submit" value="Calcular IMC">
+                        <input type="submit" value="Calcular IMC" class="btn-imc">
                         <?php
-                        $nome = $idade = $peso = $altura = $imc = $resultado = $cores_resultado_imc = $cores_resultado_tabela = "";
-                        if (!empty($_GET["peso"]) && !empty($_GET["altura"])  && !empty($_GET["nome"])) {
-                            // Todos os campos existem e têm valor
-                            $nome = $_GET["nome"];
-                            // $idade = $_GET["idade"];
-                            $peso = $_GET["peso"];
-                            $altura = (float)$_GET["altura"];
-                            $imc = round(num: $peso / ($altura * $altura), precision: 2);
-                            $resultado = $imc <= 18.5 ? "Você está abaixo do peso" : ($imc <= 25 ? "Você está peso normal" : ($imc <= 30 ? "Você com sobrepeso" : "Você está obeso"));
-                            $cores_resultado_imc = $imc <= 18.5 ? "color: #ffff; background-color: #981a1c" : ($imc <= 25 ? "color: #ffff; background-color: #99db49" : ($imc <= 30 ? "color: #ffff; background-color: #981a1c" : "color: #ffff; background-color: #c21b12"));
-                            $cores_resultado_tabela = $imc <= 18.5 ? "color: #981a1c; font-weight: bold;" : ($imc <= 25 ? "color: #99db49; font-weight: bold;" : ($imc <= 30 ? "color: #981a1c; font-weight: bold;" : "color: #c21b12; font-weight: bold;"));
-                        ?>
-                            <div class="result-container">
-                                <p class="title-result">Obrigado pelas informações, <?= $nome ?></p>
-                                <p class="result">Seu IMC foi: <span style="<?= $cores_resultado_imc ?>"><?= $imc ?></span> </p>
-                                <p class="classi"><span style="<?= $cores_resultado_tabela ?>"><?= $resultado ?></span></p>
-                            </div>
-                        <?php
-                        }
+                        include("./back.php");
                         ?>
                     </form>
 
 
                 </div>
             </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                    <div class="container">
+                        <p class="title">Seja Bem-vindo(a)</p>
+                        <p class="subtitle">Siga o formulario para calcular seu percentual de gordura corporal</p>
+
+                        <form method="get">
+                            <div class="row">
+                                <div class="col s12">
+                                    <!-- SELECT de sexo (com id e name) -->
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <select id="sexo" name="sexo" class="form-select" aria-label="Selecione seu gênero">
+                                                <option value="" disabled selected>Seu gênero</option>
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Feminino</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Peso -->
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="peso" class="form-label">Peso (kg):</label>
+                                            <input type="text" class="form-control" id="peso" name="peso" placeholder="80">
+                                        </div>
+                                    </div>
+
+                                    <!-- Altura (mantive id altura) -->
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <label for="altura_p" class="form-label">Altura (m):</label>
+                                            <input type="text" class="form-control" id="altura_p" name="altura_p" step="0.01" placeholder="1.79">
+                                        </div>
+                                    </div>
+
+                                    <!-- Cintura (sempre necessária para ambos) -->
+                                    <div class="row">
+                                        <div class="input-field col s12" id="field-cintura">
+                                            <label for="cintura" class="form-label">Cintura (cm):</label>
+                                            <input type="text" class="form-control" id="cintura" name="cintura" placeholder="90">
+                                        </div>
+                                    </div>
+
+                                    <!-- Pescoço (sempre necessária para ambos) -->
+                                    <div class="row">
+                                        <div class="input-field col s12" id="field-pescoco">
+                                            <label for="pescoco" class="form-label">Pescoço (cm):</label>
+                                            <input type="text" class="form-control" id="pescoco" name="pescoco" placeholder="40">
+                                        </div>
+                                    </div>
+
+                                    <!-- Quadril (aparece só para feminino) -->
+                                    <div class="row">
+                                        <div class="input-field col s12 hidden" id="field-quadril" aria-hidden="true">
+                                            <label for="quadril" class="form-label">Quadril (cm):</label>
+                                            <input type="text" class="form-control" id="quadril" name="quadril" placeholder="100">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <input type="submit" value="Calcular Percentual de Gordura" class="btn-imc">
+
+                            <?php include("./back.php"); ?>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
         </div>
     </section>
@@ -96,6 +148,7 @@
     <?php
     include "scrips.php";
     ?>
+
 
 </body>
 
