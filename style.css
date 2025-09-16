@@ -203,3 +203,13 @@ section {
   opacity: 0;
   transform: translateY(-6px);
 }
+
+.form-login {
+  width: 50%;
+  margin: 10% auto;
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px);           
+  -webkit-backdrop-filter: blur(10px);   
+  border-radius: 10px;                   
+  padding: 20px;
+}
